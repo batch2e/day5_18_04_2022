@@ -1,0 +1,381 @@
+
+
+Encapsulation means keeping the member variables and methods within an enclosure which is a class and after that deciding which member needs to be kept with
+restricted access and which needs to be exposed outside the class. So the members which we need to keep restricted are declared with private access
+specifier/modifier and the members which are to be exposed we declare them as public. The below is not a complete example of encapsulation.
+
+
+class Customer {
+	public String customerId;
+	public String customerName;
+	public long contactNumber;
+	public String address;
+    
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer = new Customer();
+		customer.customerId = "C101";
+		customer.customerName = "Stephen Abram";
+		customer.contactNumber = 7856341287L;
+		customer.address = "D089, St. Louis Street, Springfield, 62729";
+		customer.displayCustomerDetails();
+	}
+}
+
+---------------------------------------------------------------------------------------
+
+class Customer {
+	private String customerId;
+	private String customerName;
+	private long contactNumber;
+	private String address;
+    
+    public void setData(){
+     customerId="C101";
+     customerName = "Stephen Abram";
+     contactNumber = 7856341287L; 
+     address = "D089, St. Louis Street, Springfield, 62729";
+   }
+
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		//System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer1 = new Customer();
+	        Customer customer2 = new Customer();
+   	        customer1.setData();
+                customer2.setData();
+		customer1.displayCustomerDetails();
+                customer2.displayCustomerDetails();
+	}
+}
+
+The above code gives same data for multiple objects. We can implement Scanner and take user inout.
+
+import java.util.Scanner;
+class Customer {
+	private String customerId;
+	private String customerName;
+	private long contactNumber;
+	private String address;
+    
+    public void setData(){
+     Scanner scan=new Scanner(System.in);
+     System.out.println("Enter the value of customer id");
+     customerId=scan.next():
+     
+   }
+
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer1 = new Customer();
+	        Customer customer2 = new Customer();
+   	        customer1.setData();
+                customer2.setData();
+		customer1.displayCustomerDetails();
+                customer2.displayCustomerDetails();
+	}
+}
+
+// So if we scan the value so for multiple objects we can have different values. 
+---------------------------------------------------------------------------------------------------------------------
+
+
+class Customer {
+	private String customerId;
+	private String customerName;
+	private long contactNumber;
+	private String address;
+    
+    public void setData(String customerId, String customerName, long contactNumber, String address){
+       this.customerId=customerId;
+       this.customerName=customerName;
+       this.contactNumber=contactNumber;
+       this.address=address;
+     
+   }
+
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer1 = new Customer();
+	        Customer customer2 = new Customer();
+   	        customer1.setData("C101","Lalit",1234567890,"Delhi");
+                customer2.setData("C102","Akash",9830234232,"Chennai");
+		customer1.displayCustomerDetails();
+                customer2.displayCustomerDetails();
+	}
+}
+
+// So with the help of parameterised setData method we can provide different set of values for different objects.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+setter and getter methods. So for each of the attribute we have a pair of methods. set method to store the data or initialise the member variable and
+getData is used to access or read the data from the instance variable. We have a fixed way of writing the setter and getter method.
+
+So for set method the convention is:
+* Setter method starts with set.
+* followed by the attribute name making the first character in uppercase.
+
+For example if the attribute name is id ... We make the method as.
+int id;
+setId(){}
+String employeeName;
+setEmployeeName(){}
+
+* the set method dont have any return type.
+
+int id;
+void setId() {}
+String employeeName;
+void setEmployeeName() {}
+
+* The set method will be having parameter of the type same as that of the attribute for which we are writing the set method.
+
+int id;
+void setId(int id) {}
+String employeeName;
+void setEmployeeName(String employeeName){}
+double basic;
+void setBasic(double basic){}
+boolean graduate;
+void setGradulate(boolean graduate){}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+So for the get method the convention is:
+* Getter method starts with get.
+* followed by the attribute name making the first character in uppercase.
+
+For example if the attribute name is id ... We make the method as.
+int id;
+getId(){}
+String employeeName;
+getEmployeeName(){}
+
+* the get method have return type same as the attribute for which we are writing the get method.
+
+int id;
+int getId() {}
+String employeeName;
+String getEmployeeName() {}
+
+* The get method won;t be having any parameter.
+
+int id;
+int getId() {}
+String employeeName;
+String getEmployeeName(){}
+double basic;
+double getBasic(){}
+boolean graduate;
+boolean isGradulate(){}
+
+[Note: for boolean data read we dont have get method , it starts with is followed by the attribute name ]
+
+class Customer {
+   private int id;
+   private String name;
+   
+   public void setId(int id) {
+    this.id=id;
+   }
+
+   public int getId() {
+   return id;
+   }
+
+   public void setName(String name){
+    this.name=name;
+   }
+
+  public String getName(){
+   return name;
+  }
+}
+
+
+public class CustomerMain{
+    public static void main(String args[]){
+    Customer customer1=new Customer();
+    Customer customer2=new Customer();
+    customer1.setId(1);
+    customer1.setName("Ranjith");
+    customer2.setId(2);
+   // customer2.setName("Suresh");
+    System.out.println(customer1.getId());
+    System.out.println(customer1.getName());
+    System.out.println(customer2.getId());
+   // System.out.println(customer2.getName());
+   }
+}   
+  
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* To gernerate the setter and getter, right click on the code editor====> Source====> generate setters and getters.
+* Select the source menu item and from there , select generate setters and getters method.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Whenever we talk about Object Oriented concepts, We have 4 features associated with object oriented concepts.
+1) Encapsulation====> keeping the member variables and methods within a class. Using the access specifiers(private and public ) and planning for setter and getter 
+methods. setter method for writing or storing the details and getter method for reading/accessing the details.
+2) Abstraction
+3) Inheritance
+4) Polymorphism
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Class Item with id, name, price , qoh.....
+
+
+Item.java
+ItemMain.java
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+public class Item {
+private int id;
+private String name;
+private float price;
+private int qoh;
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public float getPrice() {
+	return price;
+}
+public void setPrice(float price) {
+	this.price = price;
+}
+public int getQoh() {
+	return qoh;
+}
+public void setQoh(int qoh) {
+	this.qoh = qoh;
+}
+
+}
+
+
+
+
+
+public class ItemMain {
+
+	public static void main(String[] args) {
+	Item item1=new Item();
+	item1.setId(1);
+	item1.setName("T-Shirt");
+	item1.setPrice(1000.50f);
+	item1.setQoh(200);
+	System.out.println(item1.getId());
+    System.out.println(item1.getName());
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Let us understand abstraction with an example
+
+
+Suppose we have initialise the members of a class.
+
+
+class Data1 {
+
+   private int num1;
+   private int num2;
+
+  public void setData(){
+    num1=10;
+    num2=20;
+  }
+
+ public void dispData(){
+   System.out.println(num1);
+   System.out.println(num2);
+  }
+}
+
+
+public class DataMain1 {
+   public static void main(String args[]) {
+    Data1 data=new Data1();
+    data.setData();
+    data.dispData();
+  }
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.Scanner;
+class Data2 {
+
+   private int num1;
+   private int num2;
+
+  public void setData(){
+   Scanner scan=new Scanner(System.in);
+   num1=scan.nextInt();
+   num2=scan.nextInt();
+  }
+
+ public void dispData(){
+   System.out.println(num1+"\n"+num2);
+ }
+}
+
+  
+
+public class DataMain2 {
+   public static void main(String args[]) {
+    Data2 data=new Data2();
+    data.setData();
+    data.dispData();
+  }
+}
+
+------------------------------------------------------------------------------------------------------------------
