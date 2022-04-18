@@ -705,7 +705,40 @@ public class Exercise1{
  }
 
  [Hint: length() and charAt()]
-------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
 
 
 
+// substring(int startIndex)===> startIndex till the end of the string
+// substring(int startIndex, int endIndex) ====> starting from startIndex and ending at end Index -1
+public class StringDemo8 {
+
+	public static void main(String[] args) {
+		String str="Welcome";
+        String substr=str.substring(3); // startIndex ( If we mention the startIndex only , it will
+        // give a substring from start index to end of the String
+        System.out.println(substr); // come
+        substr=str.substring(3,5); // startIndex is position 3 and endIndex is position 5 but while displaying , display 
+        // will be end index -1 which means here it will display till position 4
+        System.out.println(substr); //co 
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+public class StringDemo9 {
+
+	public static void main(String[] args) {
+	String str="Welcome";
+	String str2="co";
+	String str3="do";
+	boolean b=str.contains(str2);
+	System.out.println(b);
+	b=str.contains(str3);
+	System.out.println(b);
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------
