@@ -379,3 +379,333 @@ public class DataMain2 {
 }
 
 ------------------------------------------------------------------------------------------------------------------
+char alpha='a';
+char alpha2='b';
+char alpha3='c';
+char alpha4='1';
+char alpha5='$';
+
+
+  Manager ( Group of characters ) 
+  Ravi     ( Group of characters)
+
+So to work with group of characters we declare a reference variable of String type (String is a predefined class).
+
+// str is a reference variable of String type and
+// Welcome is an object of String type
+// So we are storing the reference of Welcome in str
+ public class StringDemo1 {
+    public static void main(String args[]) {
+     String str="Welcome";
+     System.out.println(str);
+    }
+ }
+
+// Welcome is a String literal. Literal means a constant. 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class StringDemo2 {
+
+	public static void main(String[] args) {
+	    String str=new String("Welcome");
+	    System.out.println(str);
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. public class StringDemo3 {
+2.    public static void main(String args[]) {
+3.      String str1="Max";
+4.      String str2="Max";
+5.   }
+6. }
+
+
+In line 3 We created a reference variable str1 and the reference variable will point to the String object Max. The literal Max will be checked for
+its existence and as it is for the first time,  the literal Max will be created and stored in the constant String pool and will be refered by str1.
+In line 4, We are writing str2=Max, In line4 again it will be checked whether the constant String pool is already having Max or not. In our example
+it is already present because of line 3. So in line 4 , the constant Max won't get created. The str2 will refer to the same String Max which was
+created in line3.  
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+== is used to check whether the reference variables are pointing to the same object or not. In the below example both str1 and str2 are pointing to 
+the same literal Max. So when we use == with the reference variables, it will return us true. But when we use equals method of String class, it
+will check the content to which the reference variables are pointing to. So in the below example equals will also return true.
+
+public class StringDemo3 {
+    public static void main(String args[]) {     
+     String str1="Max";
+     String str2="Max";
+     System.out.println(str1==str2); // true
+     // == It checks whether str1 and str2 are pointing to the
+     // same object or not.
+     System.out.println(str1.equals(str2)); // equals method is
+     // used to compare the content of the objects
+     // which means is the content which is pointed by str1 is
+     // same as the content pointed by str2. If yes it returns true
+   }
+ }
+
+String is a class. It is a non primitive data type. It is a predefined class . String class we dont need to declare or create. We have to just create
+an object of String class in our program. String class is having many constructors and methods which we can use in our program or code. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+char array[]=new char[20];
+
+* StringBuffer
+* StringBuilder
+
+String class object is immutable. Which means once the String object is created , it cannot be modified. If we modify a String object , it 
+will create a new Object all together.
+StringBuffer and StringBuilder , the object of these classes are mutable which means we can make changes in the Same string object.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class StringDemo4{
+    public static void main(String args[]) {     
+     String str1=new String("Max");
+     String str2=new String("Max");
+     System.out.println(str1==str2); // false
+     // == It checks whether str1 and str2 are pointing to the
+     // same object or not. In this case str1 and str2 are pointing to two different objects and the
+    // new objects got created with the new keyword
+     System.out.println(str1.equals(str2)); // equals method is
+     // used to compare the content of the objects
+     // which means is the content which is pointed by str1 is
+     // same as the content pointed by str2. If yes it returns true. In the current example both str1 and str2 are pointing to the
+     // objects which are having the same string content as Max. 
+   }
+ }
+
+------------------------------------------------------------
+[Note: We have to check how we are creating the String objects. 
+* Is it through String literal
+
+   String str1="hello";
+   String str2="hello";
+   == true
+   equals true
+
+
+* Through new keyword
+  String str1=new String("hello");
+  String str2=new String("hello");
+
+  == false
+  equals true
+---------------------------------------------------------------------------------------------------------------
+use equals to check whether two Strings are equal or not.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+int length(); // It returns the length of a String
+public class StringDemo5 {
+
+	public static void main(String[] args) {
+		String str="welcome";
+ // int length(); // return type of length method is int without any parameter
+		int length=str.length();
+		System.out.println(length); // 7
+		System.out.println(str.length());//7
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------
+String concat(String str2); // Adding one string to another String 
+
+public class StringDemo6{
+
+	public static void main(String[] args) {
+		String str="welcome";
+                String str2="friends";
+                String str3=str.concat(str2);
+                System.out.println(str3);   //welcomefriends
+                String str4=str2.concat(str);
+                System.out.println(str4);   // friendswelcome
+                String str5=str+str2;
+                System.out.println(str5);
+                String str6=str2+str;
+                System.out.println(str6);
+                String str7=str+" "+str2;
+                System.out.println(str7);
+                System.out.println(str+" "+str2);
+                System.out.println(str+str2);
+                
+
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------
+public class StringDemo6b{
+
+	public static void main(String[] args) {
+		String str="welcome";
+                String str2="friends";
+                String str3=str.concat(str2);
+                System.out.println(str3);   //welcomefriends
+                String str4=str2.concat(str);
+                System.out.println(str4);   // friendswelcome
+                String str5=str.concat(" ");   // welcome_
+                String str6=str5.concat(str2);   //welcome friends
+                System.out.println(str6);
+                String str7=str.concat(" ").concat(str2);  // method chaining  welcome friends
+                System.out.println(str7); 
+                System.out.println(str.concat(str2));
+
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+boolean equals(String str);
+
+
+Revise
+   
+Enter numbers from user and perform the addition of numbers till user enters any other thing than yes.
+
+Testcase
+Enter number
+1
+Do you want to continue?
+yes
+Enter number
+2
+Do you want to continue?
+yes
+Enter number
+3
+Do you want to continue?
+no
+The sum of 3 numbers : 6
+
+
+import java.util.Scanner;
+
+public class Revise1 {
+    public static void main(String args[]){
+    int num;
+    int count=0;
+    int sum=0;
+    String reply;
+    Scanner scan=new Scanner(System.in);
+    do {
+    System.out.println("Enter the number");
+    num=scan.nextInt();
+    System.out.println("Do you want to continue?");
+    reply=scan.next(); 	
+    count++;
+    sum+=num;
+    }while(reply.equals("yes"));
+    
+    System.out.println("The sum of "+count+" numbers: "+sum); 
+  }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+boolean equalsIgnoreCase(String str)
+
+Enter numbers from user and perform the addition of numbers till user enters any other thing than yes/Yes/YES/yeS/yEs.
+
+public class Revise2 {
+    public static void main(String args[]){
+    int num;
+    int count=0;
+    int sum=0;
+    String reply;
+    Scanner scan=new Scanner(System.in);
+    do {
+    System.out.println("Enter the number");
+    num=scan.nextInt();
+    System.out.println("Do you want to continue?");
+    reply=scan.next(); 	
+    count++;
+    sum+=num;
+    }while(reply.equalsIgnoreCase("yes"));
+    
+    System.out.println("The sum of "+count+" numbers: "+sum); 
+  }
+}
+
+------------------------------------------------------------
+
+String toLowerCase()
+String toUpperCase()
+
+public class StringDemo7 {
+   public static void main(String args[]) {
+       String lower="hello";
+       String upper="HELLO";
+       lower="heLLO";
+       System.out.println(lower.toUpperCase());
+       System.out.println(upper.toLowerCase());
+     }
+ }
+
+------------------------------------------------------------------------------------------------------------------
+
+char charAt(int pos);
+public class StringDemo8 {
+    public static void main(String args[]) {
+     String str="Welcome";
+     char ch=str.charAt(0);
+     System.out.println(ch); // W
+     ch=str.charAt(1);
+     System.out.println(ch); //e
+     ch=str.charAt(20);   // Exception in thread "main" java.lang.StringIndexOutOfBoundsException: 
+     //String index out of range: 20
+     System.out.println(ch);
+   }
+ }
+--------------------------------------------------------------------------------------------------------------------
+Write a code to enter a String from user and display it vertically
+ Enter a String
+ Welcome
+ Output
+ W
+ e
+ l
+ c
+ o
+ m
+ e
+Enter a String
+Hello
+Output
+H
+e
+l
+l
+o
+import java.util.Scanner;
+public class Exercise1{
+   public static void main(String args[]){
+    String str;
+    char ch=' ';
+    Scanner scan=new Scanner(System.in);
+    int length=0;
+    System.out.println("Enter a String");
+    str=scan.next();
+    length=str.length();
+    for(int pos=0;pos<length;pos++){
+    // System.out.println(str.charAt(pos));
+     ch=str.charAt(pos);
+     System.out.println(ch);
+   }
+  }
+}
+
+   }
+ }
+
+ [Hint: length() and charAt()]
+------------------------------------------------------------------
+
+
+
